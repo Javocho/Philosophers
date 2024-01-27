@@ -38,5 +38,8 @@ typedef struct s_all
 }	t_all;
 
 
+int check_args(int argc, char **argv);
+int init_all(t_all *program, int argc, char **argv);
+
 
 #endif

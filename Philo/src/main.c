@@ -7,5 +7,8 @@ void Usage() {
 
 int main(int argc, char **argv) {
 	if (argc < 5) Usage();
-	//init
+	if (check_args(argc, argv) == 1) return(1);
+	t_all program;
+	init_all(&program, argc, argv);
+	
 }

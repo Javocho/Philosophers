@@ -14,12 +14,30 @@ static int init_philos(t_all *program) {
 	int i;
 	i = -1;
 	while (++i < program->nfilos) {
-		program->philos[i]
+		program->philos[i].program = program;
+		program->philos[i].id == i;
+		program->philos[i].n_meals = 0;
+		program->philos[i].status = 0;
+		program->philos[i].eating = 0;
+		pthread_mutex_init(&(program->philos[i].lock), NULL);
 	}
 }
 
 static int init_forks(t_all *program) {
+	int	i;
 
+	i = -1;
+	while (++i < program ->nfilos)
+		pthread_mutex_init(&(program->forks[i]), NULL);
+	program->philos[0].l_fork = &(program->forks[0]);
+	program->philos[0].r_fork = &(program->forks[program->nfilos - 1]);
+
+	i = 0;
+	while (++i < program->nfilos) {
+		program->philos[i].l_fork = &(program->forks[i]);
+		program->philos[i].r_fork = &(program->forks[i-1]);
+	}
+	return (0);
 }
 
 int init_all(t_all *program, int argc, char **argv) {
@@ -34,5 +52,6 @@ int init_all(t_all *program, int argc, char **argv) {
 	pthread_mutex_init(&program->lock, NULL);
 	pthread_mutex_init(&program->monitorize, NULL);
 	if (arrays_alloc(program)) return (1);
-
+	init_philos(program);
+	init_forks(program);
 }
