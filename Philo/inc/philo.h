@@ -4,6 +4,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/time.h>
+#include <sys/types.h>
 # include <unistd.h>
 #include "../libs/libft/libft.h"
 
@@ -16,6 +17,7 @@ typedef struct s_philo
 	int			n_meals;
 	int			last_meal;
 	int			status;
+	unsigned int			time_to_die;
 	pthread_mutex_t lock;
 	pthread_mutex_t *r_fork;
 	pthread_mutex_t *l_fork;
@@ -27,11 +29,13 @@ typedef struct s_all
 	pthread_t *th_filo;
 	int			nfilos;
 	t_philo		*philos;
-	int			time_to_die;
-	int			time_to_eat;
-	int			time_to_sleep;
+	unsigned int			time_to_die;
+	unsigned int			time_to_eat;
+	unsigned int			time_to_sleep;
 	int			total_meals;
 	int			finish;
+	int			dead;
+	unsigned int	init_time;
 	pthread_mutex_t lock;
 	pthread_mutex_t monitorize;
 	pthread_mutex_t *forks;
@@ -40,6 +44,7 @@ typedef struct s_all
 
 int check_args(int argc, char **argv);
 int init_all(t_all *program, int argc, char **argv);
+unsigned int	get_time();
 
 
 #endif

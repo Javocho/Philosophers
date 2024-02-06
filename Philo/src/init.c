@@ -48,7 +48,9 @@ int init_all(t_all *program, int argc, char **argv) {
 	program->time_to_sleep = ft_atoi(argv[4]);
 	if (argc > 5) program->total_meals = ft_atoi(argv[6]);
 	else program->total_meals = -1;
+	program->dead = 0;
 	program->finish = 0;
+	program->init_time = ft_gettime();
 	pthread_mutex_init(&program->lock, NULL);
 	pthread_mutex_init(&program->monitorize, NULL);
 	if (arrays_alloc(program)) return (1);
