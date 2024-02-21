@@ -7,21 +7,16 @@ SRCS =  ./src/main.c \
 		./src/threads.c \
 		./src/utils.c \
 
-LIBFT					:=	./libs/libft/
-
-LIBS				 	:= $(LIBFT)/libft.a
-
 CC = cc 
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
-%.o: %.c ./inc/philo.h Makefile $(LIBS)
+%.o: %.c ./inc/philo.h Makefile
 		${CC} ${CFLAGS} -c $< -o $@	
 
 OBJS = ${SRCS:.c=.o}
 
 all: 
-		@$(MAKE) -C $(LIBFT)
 		$(MAKE) ${NAME}
 
 ${NAME}:: ${OBJS} $(LIBFT) Makefile
@@ -29,10 +24,8 @@ ${NAME}:: ${OBJS} $(LIBFT) Makefile
 
 clean:
 		${RM} ${OBJS} 
-		@$(MAKE) -C $(LIBFT) clean
 
 fclean: clean 
-		@$(MAKE) -C $(LIBFT) fclean
 		${RM} ${OBJS} ${NAME}
 
 re: 

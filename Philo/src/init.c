@@ -50,8 +50,9 @@ int init_all(t_all *program, int argc, char **argv) {
 	program->time_to_die = ft_atoi(argv[2]);
 	program->time_to_eat = ft_atoi(argv[3]);
 	program->time_to_sleep = ft_atoi(argv[4]);
-	if (argc > 5) program->total_meals = ft_atoi(argv[6]);
+	if (argc > 5) program->total_meals = ft_atoi(argv[5]);
 	else program->total_meals = -1;
+	printf("ha obtenido el 5 argumento\n");
 	program->dead = 0;
 	program->finish = 0;
 	program->init_time = ft_get_time();
