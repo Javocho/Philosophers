@@ -44,3 +44,186 @@
 
 
 
+5 800 200 200 7
+
+0 philo 0 took a fork
+0 philo 0 took a fork
+0 philo 0 is eating
+0 philo 2 took a fork
+0 philo 2 took a fork
+0 philo 2 is eating
+0 philo 4 took a fork
+201 philo 0 is sleeping
+201 philo 1 took a fork
+201 philo 4 took a fork
+201 philo 4 is eating
+201 philo 3 took a fork
+201 philo 1 took a fork
+201 philo 1 is eating
+201 philo 2 is sleeping
+402 philo 2 is thinking
+402 philo 2 took a fork
+402 philo 1 is sleeping
+402 philo 4 is sleeping
+402 philo 3 took a fork
+402 philo 3 is eating
+402 philo 0 is thinking
+402 philo 0 took a fork
+402 philo 0 took a fork
+402 philo 0 is eating
+603 philo 1 is thinking
+603 philo 1 took a fork
+603 philo 4 is thinking
+603 philo 4 took a fork
+603 philo 4 took a fork
+603 philo 0 is sleeping
+603 philo 3 is sleeping
+603 philo 4 is eating
+603 philo 2 took a fork
+603 philo 2 is eating
+804 philo 4 is sleeping
+804 philo 0 is thinking
+804 philo 0 took a fork
+804 philo 3 is thinking
+804 philo 3 took a fork
+804 philo 3 took a fork
+804 philo 2 is sleeping
+804 philo 3 is eating
+804 philo 1 took a fork
+804 philo 1 is eating
+1005 philo 2 is thinking
+1005 philo 2 took a fork
+1005 philo 2 took a fork
+1005 philo 1 is sleeping
+1005 philo 0 took a fork
+1005 philo 0 is eating
+1005 philo 3 is sleeping
+1005 philo 2 is eating
+1005 philo 4 is thinking
+1005 philo 4 took a fork
+1206 philo 3 is thinking
+1206 philo 3 took a fork
+1206 philo 1 is thinking
+1206 philo 1 took a fork
+1206 philo 0 is sleeping
+1206 philo 2 is sleeping
+1206 philo 1 took a fork
+1206 philo 1 is eating
+1206 philo 4 took a fork
+1206 philo 4 is eating
+1407 philo 1 is sleeping
+1407 philo 2 is thinking
+1407 philo 2 took a fork
+1407 philo 4 is sleeping
+1407 philo 3 took a fork
+1407 philo 3 is eating
+1407 philo 0 is thinking
+1407 philo 0 took a fork
+1407 philo 0 took a fork
+1407 philo 0 is eating
+1608 philo 0 is sleeping
+1608 philo 4 is thinking
+1608 philo 4 took a fork
+1608 philo 1 is thinking
+1608 philo 1 took a fork
+1608 philo 2 took a fork
+1608 philo 4 took a fork
+1608 philo 4 is eating
+1608 philo 2 is eating
+1608 philo 3 is sleeping
+1809 philo 4 is sleeping
+1809 philo 3 is thinking
+1809 philo 3 took a fork
+1809 philo 3 took a fork
+1809 philo 2 is sleeping
+1809 philo 0 is thinking
+1809 philo 0 took a fork
+1809 philo 1 took a fork
+1809 philo 1 is eating
+1809 philo 3 is eating
+2010 philo 4 is thinking
+2010 philo 4 took a fork
+2010 philo 1 is sleeping
+2010 philo 0 took a fork
+2010 philo 0 is eating
+2010 philo 3 is sleeping
+2010 philo 2 is thinking
+2010 philo 2 took a fork
+2010 philo 2 took a fork
+2010 philo 2 is eating
+2211 philo 1 is thinking
+2211 philo 1 took a fork
+2211 philo 1 took a fork
+2211 philo 1 is eating
+2211 philo 0 is sleeping
+2211 philo 3 is thinking
+2211 philo 3 took a fork
+2211 philo 2 is sleeping
+2211 philo 4 took a fork
+2211 philo 4 is eating
+2412 philo 0 is thinking
+2412 philo 1 is sleeping
+2412 philo 2 is thinking
+2412 philo 2 took a fork
+2412 philo 0 took a fork
+2412 philo 0 took a fork
+2412 philo 0 is eating
+2412 philo 3 took a fork
+2412 philo 3 is eating
+2412 philo 4 is sleeping
+2613 philo 1 is thinking
+2613 philo 1 took a fork
+2613 philo 3 is sleeping
+2613 philo 4 is thinking
+2613 philo 4 took a fork
+2613 philo 2 took a fork
+2613 philo 2 is eating
+2613 philo 0 is sleeping
+2613 philo 4 took a fork
+2613 philo 4 is eating
+2814 philo 4 is sleeping
+2814 philo 3 is thinking
+2814 philo 3 took a fork
+2814 philo 0 is thinking
+2814 philo 0 took a fork
+2814 philo 3 took a fork
+2814 philo 3 is eating
+2814 philo 2 is sleeping
+2814 philo 1 took a fork
+2814 philo 1 is eating
+3015 philo 2 is thinking
+3015 philo 2 took a fork
+3015 philo 2 took a fork
+3015 philo 3 is sleeping
+3015 philo 0 took a fork
+3015 philo 0 is eating
+3015 philo 2 is eating
+3015 philo 1 is sleeping
+3015 philo 4 is thinking
+3015 philo 4 took a fork
+3216 philo 1 is thinking
+3216 philo 1 took a fork
+3216 philo 1 took a fork
+3216 philo 3 is thinking
+3216 philo 3 took a fork
+3216 philo 2 is sleeping
+3216 philo 1 is eating
+3216 philo 0 is sleeping
+3216 philo 4 took a fork
+3216 philo 4 is eating
+3417 philo 0 is thinking
+3417 philo 0 FINISHED
+3417 philo 2 is thinking
+3417 philo 2 FINISHED
+3417 philo 4 is sleeping
+3417 philo 3 took a fork
+3417 philo 3 is eating
+3417 philo 1 is sleeping
+3618 philo 3 is sleeping
+3618 philo 1 is thinking
+3618 philo 1 FINISHED
+3618 philo 4 is thinking
+3618 philo 4 FINISHED
+3819 philo 3 is thinking
+3819 philo 3 FINISHED
+Simulation ended after 7 eats

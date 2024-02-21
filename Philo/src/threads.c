@@ -45,7 +45,7 @@ void	*routine(void *philo_ptr)
 	}
 	if (philo->n_meals == philo->program->total_meals)
 	{
-		show_state("FINISHED", philo);
+		// show_state("FINISHED", philo);
 		philo->finished = 1;
 	}
 	return (NULL);
