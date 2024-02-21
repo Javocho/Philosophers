@@ -15,8 +15,8 @@ typedef struct s_philo
 	int			id;
 	int			eating;
 	int			n_meals;
-	int			last_meal;
-	int			status;
+	int			die_time;
+	int			finished;
 	unsigned int			time_to_die;
 	pthread_mutex_t lock;
 	pthread_mutex_t *r_fork;
@@ -27,24 +27,32 @@ typedef struct s_philo
 typedef struct s_all
 {
 	pthread_t *th_filo;
+	pthread_t t1;
 	int			nfilos;
+	int			total_meals;
+	int			dead;
+	int			finish;
 	t_philo		*philos;
 	unsigned int			time_to_die;
 	unsigned int			time_to_eat;
 	unsigned int			time_to_sleep;
-	int			total_meals;
-	int			finish;
-	int			dead;
 	unsigned int	init_time;
+	pthread_mutex_t *forks;
 	pthread_mutex_t lock;
 	pthread_mutex_t monitorize;
-	pthread_mutex_t *forks;
 }	t_all;
 
 
 int check_args(int argc, char **argv);
 int init_all(t_all *program, int argc, char **argv);
-unsigned int	get_time();
-
+unsigned int	ft_get_time();
+int	thread_start(t_all *program);
+void	ft_exit(t_all *program);
+int ft_error(char *s, t_all *program);
+void	ft_sleep(unsigned int time);
+int	show_state(char *str, t_philo *philo);
+int	show_state_dead(char *str, t_philo *philo);
+void	ft_eat(t_philo *philo);
+int	ft_atoi(const char *str);	
 
 #endif

@@ -1,10 +1,11 @@
 NAME = philo
 
-SRCS = ./src/philo.c \
-	    ./src/utils.c \
-		./src/threads.c \
+SRCS =  ./src/main.c \
+	    ./src/actions.c \
 		./src/init.c \
-		./src/eat_print.c
+		./src/error_exit.c \
+		./src/threads.c \
+		./src/utils.c \
 
 LIBFT					:=	./libs/libft/
 

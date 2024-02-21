@@ -1,20 +1,81 @@
 #include "../inc/philo.h"
 
-void	monitorize() {
-	t_all *data;
+//to check if there's a philo dead
+void	*checker(void *program_ptr)
+{
+	t_all	*program;
 	int		i;
 
-	i = -1;
-	while (++i < data->nfilos)
-	
+	i = 0;
+	program = (t_all *)program_ptr;
+	ft_sleep(program->time_to_die - (program->time_to_die / 4));
+	while (i++ < program->nfilos && program->dead == 0 && program->finish == 0)
+	{
+		if (i == program->nfilos)
+			i = 0;
+		if (program->philos[i].eating == 0)
+		{
+			pthread_mutex_lock(&program->philos[i].lock);
+			if ((ft_get_time() >= program->philos[i].time_to_die) && \
+			program->philos[i].eating == 0 && program->philos[i].finished == 0)
+				show_state_dead("DIED", &program->philos[i]);
+			pthread_mutex_unlock(&program->philos[i].lock);
+		}
+		if (program->philos[i].finished == 1)
+			break ;
+	}
+	return (NULL);
 }
 
-int	thread_start(t_all *program, pthread_mutex_t *forks) {
-	int	i;
-	pthread_t pt;
-	i = -1;
-	program->init_time = ft_gettime();
-	if (program->total_meals > 0) {
+//routine to do in every philo thread
+void	*routine(void *philo_ptr)
+{
+	t_philo	*philo;
 
+	philo = (t_philo *)philo_ptr;
+	if (philo->id % 2 != 0)
+		ft_sleep(philo->program->time_to_eat / 10);
+	philo->time_to_die = philo->program->time_to_die + ft_get_time();
+	while (philo->program->dead == 0)
+	{
+		ft_eat(philo);
+		if (philo->n_meals == philo->program->total_meals && \
+		philo->program->total_meals != -1)
+			break ;
 	}
+	if (philo->n_meals == philo->program->total_meals)
+	{
+		show_state("FINISHED", philo);
+		philo->finished = 1;
+	}
+	return (NULL);
+}
+
+//Start the thread routine in every philo
+int	thread_start(t_all *program)
+{
+	int	i;
+
+	if (program->nfilos == 1)
+	{
+		pthread_mutex_lock(program->philos[0].l_fork);
+		show_state("took a fork", &program->philos[0]);
+		ft_sleep(program->time_to_die);
+		show_state_dead("DIED", &program->philos[0]);
+		pthread_mutex_unlock(program->philos[0].l_fork);
+		return (0);
+	}
+	program->init_time = ft_get_time();
+	i = -1;
+	while (++i < program->nfilos)
+		if (pthread_create(&program->th_filo[i], NULL, \
+		&routine, &program->philos[i]) != 0)
+			return (ft_error("Error creating thread.", program));
+	if (pthread_create(&program->t1, NULL, &checker, program))
+		return (ft_error("Error creating thread.", program));
+	i = -1;
+	pthread_join(program->t1, NULL);
+	while (++i < program->nfilos && program->dead == 0)
+		pthread_join(program->th_filo[i], NULL);
+	return (0);
 }
