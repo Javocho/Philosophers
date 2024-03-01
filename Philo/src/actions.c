@@ -14,12 +14,12 @@ int	show_state(char *str, t_philo *philo)
 	t_all		*program;
 
 	program = philo->program;
-	if (program->dead == 0 /*&& ft_get_time() - program->init_time >= 0*/) //2a necesaria?
+	pthread_mutex_lock(&program->monitorize);
+	if (program->dead == 0) 
 	{
-		pthread_mutex_lock(&program->lock);
-		if (program->dead == 0 /*&& ft_get_time() - program->init_time >= 0*/)
+		if (program->dead == 0)
 			printf("%u philo %i %s\n", ft_get_time() - program->init_time, philo->id, str);
-		pthread_mutex_unlock(&program->lock);
+		pthread_mutex_unlock(&program->monitorize);
 	}
 	return (0);
 }
@@ -31,14 +31,14 @@ int	show_state_dead(char *str, t_philo *philo)
 	t_all		*program;
 
 	program = philo->program;
+	pthread_mutex_lock(&program->monitorize);
 	actual_time = ft_get_time();
 	actual_time = actual_time - program->init_time;
-	pthread_mutex_lock(&program->lock);
-	if (program->dead == 0 && actual_time >= 0) //2a comprobación necesaria?
+	if (program->dead == 0)
 		printf("%lu philo %i %s\n", actual_time, philo->id, str);
 	philo->program->dead = 1;
+	pthread_mutex_unlock(&program->monitorize);
 	ft_sleep(300);
-	pthread_mutex_unlock(&program->lock);
 	return (0);
 }
 

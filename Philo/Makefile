@@ -9,7 +9,7 @@ SRCS =  ./src/main.c \
 
 CC = cc 
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=thread
 
 %.o: %.c ./inc/philo.h Makefile
 		${CC} ${CFLAGS} -c $< -o $@	
