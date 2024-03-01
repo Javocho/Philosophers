@@ -1,7 +1,7 @@
 #include "../inc/philo.h"
 
 //to check if there's a philo dead
-void	*checker(void *program_ptr)
+void	*supervisor(void *program_ptr)
 {
 	t_all	*program;
 	int		i;
@@ -29,8 +29,8 @@ void	*checker(void *program_ptr)
 	return (NULL);
 }
 
-//routine to do in every philo thread
-void	*routine(void *philo_ptr)
+//tasks to do in every philo thread
+void	*tasks(void *philo_ptr)
 {
 	t_philo	*philo;
 
@@ -64,7 +64,7 @@ void	*routine(void *philo_ptr)
 	return (NULL);
 }
 
-//Start the thread routine in every philo
+//Start the thread tasks in every philo
 int	thread_start(t_all *program)
 {
 	int	i;
@@ -82,9 +82,9 @@ int	thread_start(t_all *program)
 	i = -1;
 	while (++i < program->nfilos)
 		if (pthread_create(&program->th_filo[i], NULL, \
-		&routine, &program->philos[i]) != 0)
+		&tasks, &program->philos[i]) != 0)
 			return (ft_error("Error creating thread.", program));
-	if (pthread_create(&program->t1, NULL, &checker, program))
+	if (pthread_create(&program->t1, NULL, &supervisor, program))
 		return (ft_error("Error creating thread.", program));
 	i = -1;
 	pthread_join(program->t1, NULL);
