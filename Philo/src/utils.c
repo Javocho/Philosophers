@@ -1,8 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fcosta-f <fcosta-f@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/02 13:13:17 by fcosta-f          #+#    #+#             */
+/*   Updated: 2024/03/02 13:13:39 by fcosta-f         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/philo.h"
 
-int check_args(int argc, char **argv) {
-	int i = 0;
-	while (++i < argc) {
+int	check_args(int argc, char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (++i < argc)
+	{
 		if (ft_atoi(argv[i]) <= 0)
 			return (ft_error("Incorrect arg", NULL));
 	}

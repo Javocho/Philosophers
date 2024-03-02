@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   actions.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fcosta-f <fcosta-f@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/02 13:04:03 by fcosta-f          #+#    #+#             */
+/*   Updated: 2024/03/02 14:33:18 by fcosta-f         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/philo.h"
 
 //para dormir la cantidad de segundos time. 
 void	ft_sleep(unsigned int time)
 {
-	time += ft_get_time(); //para tener tiempo final
+	time += ft_get_time();
 	while (ft_get_time() <= time)
 		usleep(100);
 }
@@ -21,6 +33,7 @@ int	show_state(char *str, t_philo *philo)
 			printf("%u philo %i %s\n", ft_get_time() - program->init_time, philo->id, str);
 		pthread_mutex_unlock(&program->monitorize);
 	}
+	pthread_mutex_unlock(&program->monitorize);
 	return (0);
 }
 
@@ -55,18 +68,26 @@ static void	ft_forks(t_philo *philo)
 //eat, sleep, think, cycle
 void	ft_eat(t_philo *philo)
 {
+	unsigned int time_to_eat;
+	unsigned int time_to_sleep;
+
+	//pthread_mutex_lock(&philo->lock);
 	ft_forks(philo);
-	pthread_mutex_lock(&philo->lock);
+	//pthread_mutex_lock(&philo->lock);
 	philo->eating = 1;
 	show_state("is eating", philo);
+	pthread_mutex_lock(&(philo->program->lock));
 	philo->time_to_die = ft_get_time() + philo->program->time_to_die;
-	ft_sleep(philo->program->time_to_eat);
+	time_to_eat = philo->program->time_to_eat;
+	time_to_sleep = philo->program->time_to_sleep;
+	pthread_mutex_unlock(&(philo->program->lock));
+	ft_sleep(time_to_eat);
 	philo->n_meals++;
 	philo->eating = 0;
 	pthread_mutex_unlock(&philo->lock);
 	pthread_mutex_unlock(philo->l_fork);
 	pthread_mutex_unlock(philo->r_fork);
 	show_state("is sleeping", philo);
-	ft_sleep(philo->program->time_to_sleep);
+	ft_sleep(time_to_sleep);
 	show_state("is thinking", philo);
 }
